@@ -10,24 +10,24 @@
 #define KEY_RIGHT 77
 #define ESC 27
 /*
-	BARIŞCAN KURTKAYA GRUP:2 NUMARA: 17014090
-	mail: l1417090@std.yildiz.edu.tr // bariscankurtkaya@gmail.com
+	Author: BARIŞCAN KURTKAYA 
+	bariscankurtkaya@gmail.com
 	*/
 int main()
 {
-	int skor=0;	//Skorunuz
-	int hamle=0;//Hamle sayısı
-	int i,j;	//While döngüleri için elemanlar
-	int e= 0;	//e- sayısı
-	int E= 0;	//e+ sayısı
-	int p= 0;	//p- sayısı
-	int P= 0;	//p+ sayısı
-	int t= 0;	//envanter matris x elamanı
-	int c= 0;	//getch fonksiyonu için kullanılan eleman
-	int x= 1;	//Başlangıç x
-	int y= 2;	//Başlangıç y
-	int cx=6;	//cikis x
-	int cy=5;	//cikis y
+	int skor=0;	//Score 
+	int hamle=0;	//Number of moves
+	int i,j;	//Elements for while loops
+	int e= 0;	//number of e- 
+	int E= 0;	//number of e+
+	int p= 0;	//number of p-
+	int P= 0;	//number of p+
+	int t= 0;	//inventory matrix x element
+	int c= 0;	//The element used for the getch function
+	int x= 1;	//Start x
+	int y= 2;	//Start y
+	int cx=6;	//Exit x
+	int cy=5;	//Exit y
 	char k= '0';
 	char Lab[N][M]= {
 {'1','1','K','0','0','p','0','0'},
@@ -43,14 +43,14 @@ int main()
 	Lab[y][x]= 'X';
 	Lab[cy][cx]= 'C';
 	
-	while((y!=cy) or (x!=cx))  //Çıkış koordinantlarına gelmediği sürece oyundan çıkmayacak (!Karadelik ve ESC tuşu koordinantları direk çıkışa eşitler!)
+	while((y!=cy) or (x!=cx))  //It will not exit the game unless it reaches the exit coordinates (! Black Hole and ESC key coordinates are equal to direct exit!)
     	{	
     		system ("CLS");
     		if (hamle>=0)
     		{
     			Lab[2][1]='G';
 			}
-    		for(i=0;i<N;i++)   //Matris'i ekrana yazdırma
+    		for(i=0;i<N;i++)   //Printing the matrix to the screen
 			{
 				printf("\n");
 				for(j=0;j<M;j++)
@@ -58,7 +58,7 @@ int main()
 					printf("%c ", Lab[i][j]);
 					}
 			}
-			printf("\ninventory: ");   //Topladığınız eşyaları envanterinizde görebilirsiniz
+			printf("\ninventory: ");   //You can see the items you collect in your inventory
 			for (i=0;i<N*M;i++)
 			{
 				printf("%c ", inventory[0][i]);
@@ -67,7 +67,7 @@ int main()
     	    c = 0;
 		    switch(c=getch()) 
 			{
-	   		    case KEY_UP:   //Yukarı yön tuşu
+	   		    case KEY_UP:   //Up arrow key
 	   		    		if (Lab[y-1][x] != '0' and Lab[y-1][x] != '1' and Lab[y-1][x] != 'K' and y!=0)
 	   		    		{
 							if(Lab[y-1][x]!='G')
@@ -87,7 +87,7 @@ int main()
 						}
 	      				else if(Lab[y-1][x]== 'K')
 	      				{
-	      					printf("\nYOU DIED\nASAGIDA GORDUGUN BUTUN ESYALAR BOSA GITTI");
+	      					printf("\nYOU DIED\nSEE BELOW ALL ITEMS GONE WASTE");
 							y=cy;
 	      					x=cx;
 	      					break;
@@ -100,7 +100,7 @@ int main()
 	      					break;
 	      				}
 	   		        break;
-	   		    case KEY_DOWN:   //Aşağı yön tuşu
+	   		    case KEY_DOWN:   //Down arrow key
 	      				if(Lab[y+1][x] != '0' and Lab[y+1][x] != '1' and Lab[y+1][x] != 'K' and y!=7 )
 	   		    		{
 	   		    			if(Lab[y+1][x]!='G')
@@ -120,7 +120,7 @@ int main()
 						}
 	      				else if(Lab[y+1][x]== 'K')
 	      				{
-	      					printf("\nYOU DIED\nASAGIDA GORDUGUN BUTUN ESYALAR BOSA GITTI");
+	      					printf("\nYOU DIED\nSEE BELOW ALL ITEMS GONE WASTE");
 							y=cy;
 	      					x=cx;
 	      					break;
@@ -133,7 +133,7 @@ int main()
 		      				break;
 		      			}
 	   		        break;
-	   		    case KEY_LEFT:    //Sol yön tuşu
+	   		    case KEY_LEFT:    //Left arrow key
 	   		    		if(Lab[y][x-1]!='0' and Lab[y][x-1] != '1' and Lab[y][x-1] != 'K' and x!=0)
 	   		    		{
 	   		    			if(Lab[y][x-1]!='G')
@@ -153,7 +153,7 @@ int main()
 						}
 	      				else if(Lab[y][x-1]== 'K')
 	      				{
-	      					printf("\nYOU DIED\nASAGIDA GORDUGUN BUTUN ESYALAR BOSA GITTI");
+	      					printf("\nYOU DIED\nSEE BELOW ALL ITEMS GONE WASTE");
 	      					y=cy;
 	      					x=cx;
 	      					break;
@@ -166,7 +166,7 @@ int main()
 		      				break;
 		      			}
 	    	        break;
-	  		    case KEY_RIGHT:   //Sağ yön tuşu
+	  		    case KEY_RIGHT:   //Right arrow key
 	  		    		if(Lab[y][x+1]!='0' and Lab[y][x+1] != '1' and Lab[y][x+1] !=  'K' and x!=7)
 	   		    		{
 	   		    			if(Lab[y][x+1]!='G')
@@ -186,7 +186,7 @@ int main()
 						}
 	      				else if(Lab[y][x+1]== 'K')
 	      				{
-	      					printf("\nYOU DIED\nASAGIDA GORDUGUN BUTUN ESYALAR BOSA GITTI");
+	      					printf("\nYOU DIED\nSEE BELOW ALL ITEMS GONE WASTE");
 							y=cy;
 	      					x=cx;
 	      					break;
@@ -199,14 +199,14 @@ int main()
 		      				break;
 		      			}
 	   		        break;
-	   		    case ESC:   //Escape tuşu
-	   		    		printf("\nQUIT\nCIKMADAN ONCE BUNLARI TOPLAMISTIN");
+	   		    case ESC:   //Escape key
+	   		    		printf("\nQUIT\nYOU COLLECTED THESE BEFORE EXIT");
 	   		    		y=cy;
 	   		    		x=cx;
 	   		    	break;
    		    }
    		}
-   	for (i=0;i<N*M;i++)    //Toplanan eşyaları sayma kısmı
+   	for (i=0;i<N*M;i++)    //Counting items collected
    		{
    			if(inventory[0][i]=='P')
    			{
@@ -225,7 +225,7 @@ int main()
 				E++;
 			}
 		}
-	if(p>P and E>e)    //Karşıt madde oluşup oluşmadığını öğrendiğimiz kısım
+	if(p>P and E>e)    //The part where we learn whether the opposite substance is formed
 	{
 		if(p-P>E-e)
 		{
@@ -236,8 +236,8 @@ int main()
 			skor=p-P;
 		}
 	}
-	printf("\n%d adet e \n%d adet E \n%d adet p \n%d adet P topladiniz",e,E,p,P);
-	printf("\n%d adet Karsit madde uretildi. ", skor );
+	printf("You collected \n%d e - \n%d  E - \n%d  p - \n%d P ",e,E,p,P);
+	printf("\n%d counters of opposite matters were produced ", skor );
 	
 	return 0;
 }	
